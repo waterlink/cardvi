@@ -1,4 +1,15 @@
 Cardvi::Application.routes.draw do
+
+  resources :cards
+
+  devise_for :users
+
+  root :to => "cards#index"
+
+  match "/:username/:cardname" => "cards#show", :username => /[^\/\.]{6,}/
+  match "/:username" => "cards#index", :username => /[^\/\.]{6,}/
+  match "/:username" => "cards#index", :username => /all/
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
