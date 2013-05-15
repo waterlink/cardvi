@@ -13,10 +13,14 @@ class CardsController < ApplicationController
   # GET /cards
   # GET /cards.json
   def index
+    @user = false
+    if current_user
+      @user = current_user
+    end
     if params[:username]
       unless params[:username] == "all"
-        user = User.where(:name => params[:username]).first
-        @cards = Card.where :user_id => user.id
+        @user = User.where(:name => params[:username]).first
+        @cards = Card.where :user_id => @user.id
       else
         @cards = Card.all
       end

@@ -1,27 +1,38 @@
 <h1>Listing cards</h1>
 
-<table>
+<% if current_user and current_user.id == @user.id %>
+<%= link_to 'New Card', new_card_path %>
+<% end %>
+
+<br />
+<br />
+<br />
+
+<table class="table table-striped">
   <tr>
     <th>Name</th>
-    <th>Content</th>
+    <!-- <th>Content</th> -->
+    <% unless current_user %>
     <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <% end %>
+    <th colspan=3>Actions</th>
+    <!-- <th></th> -->
+    <!-- <th></th> -->
   </tr>
 
 <% @cards.each do |card| %>
   <tr>
     <td><%= card.name %></td>
-    <td><%= card.content %></td>
-    <td><%= card.user_id %></td>
+    <!-- <td><%= card.content %></td> -->
+    <% unless current_user %>
+    <td><%= link_to card.user.name, "/#{card.user.name}" %></td>
+    <% end %>
     <td><%= link_to 'Show', card %></td>
+    <% if current_user and current_user.id == @user.id %>
     <td><%= link_to 'Edit', edit_card_path(card) %></td>
     <td><%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Card', new_card_path %>

@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Cardvi</title>
+  <title><%= yield :title %> | Cardvi</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Cardvi", '#', id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Home",    '#' %></li>
+          <li><%= link_to "Help",    '#' %></li>
+          <% if user_signed_in? %>
+						<li>
+					  <%= link_to('Sign out', destroy_user_session_path) %>        
+					  </li>
+					<% else %>
+					  <li>
+					  <%= link_to('Sign in', new_user_session_path)  %>  
+					  </li>
+					<% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<%= yield %>
+
+<div class="container">
+	<p class="alert alert-info <%= 'hide' unless notice %>"><%= notice %></p>
+	<p class="alert <%= 'hide' unless alert %>"><%= alert %></p>
+	<%= yield %>
+</div>
 
 </body>
 </html>

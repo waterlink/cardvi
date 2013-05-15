@@ -1,20 +1,18 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<p>
+<!-- <p>
   <b>Name:</b>
   <%= @card.name %>
-</p>
+</p> -->
+
+<h1><%= @card.name %></h1>
+<em class="pull-right"> by <%= @card.user.name %> </em>
 
 <p>
-  <b>Content:</b>
   <%= @card.content %>
 </p>
 
-<p>
-  <b>User:</b>
-  <%= @card.user_id %>
-</p>
-
-
+<% if current_user and current_user.id == @card.user.id %>
 <%= link_to 'Edit', edit_card_path(@card) %> |
+<% end %>
 <%= link_to 'Back', cards_path %>
