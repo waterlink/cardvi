@@ -1,15 +1,8 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
-<!-- <p>
-  <b>Name:</b>
-  <%= @card.name %>
-</p> -->
-
 <h1><%= @card.name %></h1>
 <em class="pull-right"> by <%= @card.user.name %> </em>
 
 <p>
-  <%= @card.content %>
+  <% markdown @card.content %>
 </p>
 
 <% if current_user and current_user.id == @card.user.id %>

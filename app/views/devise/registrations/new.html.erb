@@ -1,21 +1,38 @@
 <h2>Sign up</h2>
 
+<div class="row">
+
+<div class="span4">&nbsp;</div>
+
+<div class="span4">
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
+  <!-- <div><%= f.label :name %><br /> -->
+  <%= f.text_field :name, :autofocus => true, :placeholder => "name", :class => "span4" %>
+  <!-- </div> -->
+  <br/>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <!-- <div><%= f.label :email %><br /> -->
+  <%= f.email_field :email, :placeholder => "email", :class => "span4" %>
+  <!-- </div> -->
+  <br/>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <!-- <div><%= f.label :password %><br /> -->
+  <%= f.password_field :password, :placeholder => "password", :class => "span4" %>
+  <!-- </div> -->
+  <br/>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <!-- <div><%= f.label :password_confirmation %><br /> -->
+  <%= f.password_field :password_confirmation, :placeholder => "confirm password", :class => "span4" %>
+  <!-- </div> -->
 
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
+
+</div>

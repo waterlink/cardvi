@@ -39,6 +39,11 @@ group :test do
 	# gem 'libnotify', '0.5.9'
 end
 
+# gems for markdown
+gem "redcarpet"
+gem "github-markup"
+gem "github-markdown"
+
 # To use ActiveModel has_secure_password
 # gem "bcrypt-ruby", "~> 3.0.0"
 

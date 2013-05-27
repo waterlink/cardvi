@@ -1,3 +1,5 @@
+<div class="row">
+
 <%= form_for(@card) do |f| %>
   <% if @card.errors.any? %>
     <div id="error_explanation">
@@ -12,18 +14,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "span12" %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => "span12" %>
   </div>
   <!-- <div class="field">
     <%= f.label :user_id %><br />
     <%= f.number_field :user_id %>
   </div> -->
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </div>
 <% end %>
+
+</div>
